@@ -6,11 +6,11 @@ namespace DengueMatao.Application.DTOs
 {
     public class CasoDengueDTO
     {
-        public int Id { get; set; }
+        public int Id { get;}
         public string Cep { get; set; }
         public string NomeRua { get; set; }
         public string Bairro { get; set; }
         public int NumeroCasa { get; set; }
-        public DateTime DataRegistro { get; set; }
+        public DateTime DataRegistro { get; }
     }
 }

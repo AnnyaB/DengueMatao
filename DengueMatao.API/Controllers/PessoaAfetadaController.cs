@@ -15,10 +15,9 @@ namespace DengueMatao.API.Controllers
             _pessoaAfetadaService = pessoaAfetadaService;
         }
 
-
         // GET: api/<PessoaAfetadaController>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PessoaAfetadaDTO>>> Get()
+        public async Task<ActionResult<IEnumerable<PessoaAfetadaDTO>>> GetPessoasAfetadas()
         {
             var todasPessoasAfetadas = await _pessoaAfetadaService.GetPessoaAfetada();
             if (todasPessoasAfetadas == null)
@@ -31,27 +30,51 @@ namespace DengueMatao.API.Controllers
 
         // GET api/<PessoaAfetadaController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<PessoaAfetadaDTO>> GetId(int id)
         {
-            return "value";
+            var pessoaAfetada = await _pessoaAfetadaService.GetById(id);
+            if (pessoaAfetada == null)
+            {
+                return NotFound("Pessoa Afetada não encontrada");
+            }
+            return Ok(pessoaAfetada);
         }
 
-        // POST api/<PessoaAfetadaController>
+        //POST api/<pessoaAfetadaController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<PessoaAfetadaDTO>> PostPessoaAfetada(PessoaAfetadaDTO pessoaAfetadaDTO)
         {
+            if (pessoaAfetadaDTO == null)
+            {
+                return BadRequest("Caso Dengue invalido");
+            }
+            await _pessoaAfetadaService.Add(pessoaAfetadaDTO);
+            return CreatedAtAction(nameof(GetPessoasAfetadas), new { id = pessoaAfetadaDTO.Id }, pessoaAfetadaDTO);
         }
 
-        // PUT api/<PessoaAfetadaController>/5
+        // PUT api/<pessoaAfetadaController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult<PessoaAfetadaDTO>> UpdatePessoaAfetada(PessoaAfetadaDTO pessoaAfetadaDTO)
         {
+            if (pessoaAfetadaDTO == null)
+            {
+                return BadRequest("Caso Dengue invalido");
+            }
+            await _pessoaAfetadaService.Update(pessoaAfetadaDTO);
+            return CreatedAtAction(nameof(GetId), new { id = pessoaAfetadaDTO.Id }, pessoaAfetadaDTO);
         }
 
         // DELETE api/<PessoaAfetadaController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult<PessoaAfetadaDTO>> DeletePessoaAfetada(int id)
         {
+            var pessoaAfetadaDTO = _pessoaAfetadaService.GetById(id);
+            if (id == null)
+            {
+                return BadRequest("Caso Dengue invalido");
+            }
+            await _pessoaAfetadaService.Delete(id);
+            return CreatedAtAction(nameof(GetId), new { id = pessoaAfetadaDTO.Id }, pessoaAfetadaDTO);
         }
     }
 }
