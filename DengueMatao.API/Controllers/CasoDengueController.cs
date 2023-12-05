@@ -25,75 +25,31 @@ namespace DengueMatao.API.Controllers
                 return NotFound("Casos de dengue não foram encontrados");
             }
             return Ok(todosCasosDengue);
-        } 
-
-        // GET: CasoDengue/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
         }
 
-        // GET: CasoDengue/Create
-        public ActionResult Create()
+        // GET api/<PessoaAfetadaController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
         {
-            return View();
+            return "value";
         }
 
-        // POST: CasoDengue/Create
+        // POST api/<PessoaAfetadaController>
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public void Post([FromBody] string value)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
 
-        // GET: CasoDengue/Edit/5
-        public ActionResult Edit(int id)
+        // PUT api/<PessoaAfetadaController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
         {
-            return View();
         }
 
-        // POST: CasoDengue/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        // DELETE api/<PessoaAfetadaController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CasoDengue/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CasoDengue/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
