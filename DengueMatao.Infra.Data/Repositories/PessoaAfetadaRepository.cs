@@ -15,7 +15,7 @@ namespace DengueMatao.Infra.Data.Repositories
 
         public async Task<IEnumerable<PessoaAfetada>> GetTodasPessoasAfetadasAsync()
         {
-            return await _pessoaAfetadaContext.TodasPessoasAfetadas.ToListAsync();
+            return await _pessoaAfetadaContext.PessoaAfetada.ToListAsync();
         }
 
         public async Task<PessoaAfetada> CreateAsync(PessoaAfetada pessoaAfetada)
@@ -27,7 +27,7 @@ namespace DengueMatao.Infra.Data.Repositories
 
         public async Task<PessoaAfetada> GetByIdAsync(int? id)
         {
-            return await _pessoaAfetadaContext.TodasPessoasAfetadas.FindAsync(id);
+            return await _pessoaAfetadaContext.PessoaAfetada.FindAsync(id);
         }
 
         public async Task<PessoaAfetada> RemoveAsync(PessoaAfetada pessoaAfetada)

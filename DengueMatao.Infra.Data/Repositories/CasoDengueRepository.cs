@@ -16,7 +16,7 @@ namespace DengueMatao.Infra.Data.Repositories
 
         public async Task<IEnumerable<CasoDengue>> GetTodosCasosDengueAsync()
         {
-            return await _casoDengueContext.TodosCasosDengue.ToListAsync();
+            return await _casoDengueContext.CasoDengue.ToListAsync();
         }
 
         public async Task<CasoDengue> CreateAsync(CasoDengue casoDengue)
@@ -28,7 +28,7 @@ namespace DengueMatao.Infra.Data.Repositories
 
         public async Task<CasoDengue> GetByIdAsync(int? id)
         {
-            return await _casoDengueContext.TodosCasosDengue.FindAsync(id);
+            return await _casoDengueContext.CasoDengue.FindAsync(id);
         }
 
         public async Task<CasoDengue> RemoveAsync(CasoDengue casoDengue)

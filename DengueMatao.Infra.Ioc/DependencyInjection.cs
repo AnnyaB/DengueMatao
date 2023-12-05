@@ -1,4 +1,7 @@
-﻿using DengueMatao.Domain.Interface;
+﻿using DengueMatao.Application.Interfaces;
+using DengueMatao.Application.Mappings;
+using DengueMatao.Application.Services;
+using DengueMatao.Domain.Interface;
 using DengueMatao.Infra.Data.Context;
 using DengueMatao.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +19,12 @@ namespace DengueMatao.Infra.Ioc
 
             services.AddScoped<IPessoaAfetadaRepository, PessoaAfetadaRepository>();
             services.AddScoped<ICasoDengueRepository, CasoDengueRepository>();
-            
+
+            //MappingInjection DTOs
+            services.AddScoped<ICasoDengueService, CasoDengueService>();
+            services.AddScoped<IPessoaAfetadaService, PessoaAfetadaService>();
+
+            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
             return services;
         }
     }

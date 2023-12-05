@@ -24,7 +24,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DengueMatao.Infra.Ioc", "De
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DengueMatao.Domain.Test", "DengueMatao.Domain.Test\DengueMatao.Domain.Test.csproj", "{14D4B5D5-E1AA-451C-8487-50D8C76991F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DengueMatao.WebUI", "DengueMatao.WebUI\DengueMatao.WebUI.csproj", "{C5765B69-1E82-4AB6-931A-7E0B6D8B75F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DengueMatao.API", "DengueMatao.API\DengueMatao.API.csproj", "{D7C54564-134D-4C13-B461-152059EB2D01}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2E9F61D6-E6DD-48B4-8578-58762553B663} = {2E9F61D6-E6DD-48B4-8578-58762553B663}
+		{C77F0E0E-6ABD-4DFA-82BD-8EA895E16035} = {C77F0E0E-6ABD-4DFA-82BD-8EA895E16035}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,10 +56,10 @@ Global
 		{14D4B5D5-E1AA-451C-8487-50D8C76991F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14D4B5D5-E1AA-451C-8487-50D8C76991F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14D4B5D5-E1AA-451C-8487-50D8C76991F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5765B69-1E82-4AB6-931A-7E0B6D8B75F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5765B69-1E82-4AB6-931A-7E0B6D8B75F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5765B69-1E82-4AB6-931A-7E0B6D8B75F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5765B69-1E82-4AB6-931A-7E0B6D8B75F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7C54564-134D-4C13-B461-152059EB2D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7C54564-134D-4C13-B461-152059EB2D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7C54564-134D-4C13-B461-152059EB2D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7C54564-134D-4C13-B461-152059EB2D01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

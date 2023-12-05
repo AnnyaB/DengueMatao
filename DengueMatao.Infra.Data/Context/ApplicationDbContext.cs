@@ -7,8 +7,8 @@ namespace DengueMatao.Infra.Data.Context
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-        public DbSet<CasoDengue> TodosCasosDengue { get; set; }
-        public DbSet<PessoaAfetada> TodasPessoasAfetadas { get; set; }
+        public DbSet<CasoDengue> CasoDengue { get; set; }
+        public DbSet<PessoaAfetada> PessoaAfetada { get; set; }
 
     }
 }
