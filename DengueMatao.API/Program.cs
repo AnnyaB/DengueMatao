@@ -5,6 +5,10 @@ using DengueMatao.Domain.Interface;
 using DengueMatao.Infra.Data.Context;
 using DengueMatao.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using System.Configuration;
+using System.Data.Entity;
 
 namespace DengueMatao.API
 {
@@ -34,8 +38,12 @@ namespace DengueMatao.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-
-
+            builder.Services.AddCors(options => options.AddPolicy("AllowAnyOrigin", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
 
             var app = builder.Build();
 
@@ -49,8 +57,8 @@ namespace DengueMatao.API
             app.UseHttpsRedirection();
             app.UseStatusCodePages();
             app.UseRouting();
-
-
+            app.UseCors("AllowAnyOrigin");
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 

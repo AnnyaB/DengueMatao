@@ -1,5 +1,6 @@
 ﻿using DengueMatao.Application.DTOs;
 using DengueMatao.Application.Interfaces;
+using DengueMatao.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DengueMatao.API.Controllers
@@ -9,10 +10,12 @@ namespace DengueMatao.API.Controllers
     public class CasoDengueController : ControllerBase
     {
         private readonly ICasoDengueService _casoDengueService;
+        private readonly IPessoaAfetadaService _pessoaAfetadaService;
 
-        public CasoDengueController(ICasoDengueService casoDengueService)
+        public CasoDengueController(ICasoDengueService casoDengueService, IPessoaAfetadaService pessoaAfetadaService)
         {
             _casoDengueService = casoDengueService;
+            _pessoaAfetadaService = pessoaAfetadaService;
         }
 
         // GET: api/<CasoDengueController>
@@ -67,13 +70,14 @@ namespace DengueMatao.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<CasoDengueDTO>> DeleteCasoDengue(int id)
         {
-            var casoDengueDTO = _casoDengueService.GetById(id);
+            var casoDengueDTO = await _casoDengueService.GetById(id);
             if (id == null)
             { 
                 return BadRequest("Caso Dengue invalido");
             }
+            await _pessoaAfetadaService.Delete(id);
             await _casoDengueService.Delete(id);
-            return Ok(casoDengueDTO);
+            return CreatedAtAction(nameof(GetId), new { id = casoDengueDTO.Id }, casoDengueDTO);
         }
 }
 }

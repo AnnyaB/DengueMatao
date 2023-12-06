@@ -68,7 +68,7 @@ namespace DengueMatao.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<PessoaAfetadaDTO>> DeletePessoaAfetada(int id)
         {
-            var pessoaAfetadaDTO = _pessoaAfetadaService.GetById(id);
+            var pessoaAfetadaDTO = await _pessoaAfetadaService.GetById(id);
             if (id == null)
             {
                 return BadRequest("Caso Dengue invalido");

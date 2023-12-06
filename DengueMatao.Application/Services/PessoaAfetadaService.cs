@@ -43,7 +43,7 @@ namespace DengueMatao.Application.Services
 
         public async Task Delete(int? id)
         {
-            var pessoaAfetadaEntity = _pessoaAfetadaRepository.GetByIdAsync(id).Result;
+            var pessoaAfetadaEntity = await _pessoaAfetadaRepository.GetByIdAsync(id);
             await _pessoaAfetadaRepository.RemoveAsync(pessoaAfetadaEntity);
         }
     }
